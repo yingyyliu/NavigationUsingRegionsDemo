@@ -89,10 +89,7 @@ namespace NavigationUsingRegionsDemo.ViewModels.Commands
             /// <param name="canExecuteMethod"></param>
             public DelegateCommand(Action<object> executeMethod, Predicate<object> canExecuteMethod)
             {
-                if (null == executeMethod)
-                    throw new ArgumentNullException("executeMethod");
-
-                this._executeMethod = executeMethod;
+                _executeMethod = executeMethod ?? throw new ArgumentNullException("executeMethod");
                 this._canExecuteMethod = canExecuteMethod;
             }
 
@@ -112,8 +109,8 @@ namespace NavigationUsingRegionsDemo.ViewModels.Commands
                 _executeMethod(parameter);
             }
 
-            private Predicate<object> _canExecuteMethod;
-            private Action<object> _executeMethod;
+            private readonly Predicate<object> _canExecuteMethod;
+            private readonly Action<object> _executeMethod;
         }
 
 

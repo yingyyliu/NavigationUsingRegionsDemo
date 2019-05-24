@@ -16,8 +16,8 @@ namespace NavigationUsingRegionsDemo.ViewModels.Settings
     {
         #region Private fields
         private readonly IContainerExtension _container;
-        private IRegionManager _regionManager;
-        private List<String> _things;
+        private readonly IRegionManager _regionManager;
+        private List<string> _things;
         #endregion
 
         #region Public properties
