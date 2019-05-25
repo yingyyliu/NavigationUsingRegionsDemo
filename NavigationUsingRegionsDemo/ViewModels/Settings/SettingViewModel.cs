@@ -12,11 +12,10 @@ using System.Windows.Controls;
 
 namespace NavigationUsingRegionsDemo.ViewModels.Settings
 {
-    public class SettingViewModel : BindableBase
+    public class SettingViewModel : BindableBase,IRegionManagerAware
     {
         #region Private fields
-        private readonly IContainerExtension _container;
-        private readonly IRegionManager _regionManager;
+  
         private List<string> _things;
         #endregion
 
@@ -45,11 +44,8 @@ namespace NavigationUsingRegionsDemo.ViewModels.Settings
         #endregion
 
 
-        public SettingViewModel(IContainerExtension container, IRegionManager regionManager)
+        public SettingViewModel()
         {
-            _container = container;
-            _regionManager = regionManager;
-
             ThingChangedCommand = new DelegateCommand<SelectionChangedEventArgs>(OnThingChanged);
         }
 
@@ -59,13 +55,15 @@ namespace NavigationUsingRegionsDemo.ViewModels.Settings
 
             if (string.Compare(currThing, "Item A", true) == 0)
             {
-                _regionManager.RequestNavigate("ViewInjectionRegion", "ItemA");
+                RegionManager.RequestNavigate("ViewInjectionRegion", "ItemA");
             }
             else if (string.Compare(currThing, "Item B", true) == 0)
             {
-                _regionManager.RequestNavigate("ViewInjectionRegion", "ItemB");
+                RegionManager.RequestNavigate("ViewInjectionRegion", "ItemB");
             }
   
         }
+
+        public IRegionManager RegionManager { get; set; }
     }
 }
