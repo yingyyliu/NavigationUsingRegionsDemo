@@ -40,7 +40,7 @@
             </ComboBox>
         </Grid>
 
-        <ContentControl prism:RegionManager.RegionName="ViewInjectionRegion" />
+        <ContentControl x:Name="ContentControl" prism:RegionManager.RegionName="ViewInjectionRegion" />
 
 
 

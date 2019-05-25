@@ -32,5 +32,11 @@ namespace NavigationUsingRegionsDemo
 
             containerRegistry.Register<ICommandMap, CommandMap>();
         }
+
+        protected override void ConfigureDefaultRegionBehaviors(IRegionBehaviorFactory regionBehaviors)
+        {
+            base.ConfigureDefaultRegionBehaviors(regionBehaviors);
+            regionBehaviors.AddIfMissing(RegionManagerAwareBehavior.BehaviorKey,typeof(RegionManagerAwareBehavior));
+        }
     }
 }

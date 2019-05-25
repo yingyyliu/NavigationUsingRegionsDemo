@@ -1,17 +1,13 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using NavigationUsingRegionsDemo.ViewModels;
+﻿using NavigationUsingRegionsDemo.Views.Settings;
+using Prism.Regions;
 
 namespace NavigationUsingRegionsDemo.ViewModels.Settings
 {
     public class SettingsMainWindowViewModel : DialogViewModelBase
     {
-        public SettingsMainWindowViewModel()
+        public SettingsMainWindowViewModel(IRegionManager regionManager)
         {
-
+            regionManager.RegisterViewWithRegion("SettingRegion", typeof(Setting));
         }
     }
 }

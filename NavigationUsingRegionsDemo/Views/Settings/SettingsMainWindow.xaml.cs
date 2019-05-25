@@ -12,16 +12,16 @@ namespace NavigationUsingRegionsDemo.Views.Settings
     /// </summary>
     public partial class SettingsMainWindow : UserControl
     {
-        private readonly IRegionManager _regionManager;
-        private readonly IContainer _container;
+        //private readonly IRegionManager _regionManager;
+        //private readonly IContainer _container;
 
         public SettingsMainWindow()
         {
             InitializeComponent();
-            _container = ((App)Application.Current).Container.GetContainer();
-            _regionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
+            //_container = ((App)Application.Current).Container.GetContainer();
+            //_regionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
 
-            _regionManager.RegisterViewWithRegion("SettingRegion", typeof(Setting));
+            //_regionManager.RegisterViewWithRegion("SettingRegion", typeof(Setting));
         }
     }
 }
