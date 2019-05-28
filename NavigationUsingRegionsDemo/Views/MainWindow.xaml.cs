@@ -10,7 +10,7 @@ namespace NavigationUsingRegionsDemo.Views
     public partial class MainWindow : Window
     {
 
-        private IRegionManager _regionManager;
+        private readonly IRegionManager _regionManager;
 
         public MainWindow()
         {
