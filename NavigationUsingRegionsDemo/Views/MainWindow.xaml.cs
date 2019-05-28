@@ -9,13 +9,9 @@ namespace NavigationUsingRegionsDemo.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        #region Private fields
         private readonly IRegionManager _regionManager;
-
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        #endregion
 
         public MainWindow(IRegionManager regionManager)
         {

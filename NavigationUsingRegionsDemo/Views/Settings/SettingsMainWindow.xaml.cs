@@ -15,15 +15,13 @@ namespace NavigationUsingRegionsDemo.Views.Settings
     {
         #region Private fields
         private readonly IRegionManager _regionManager;
-        private readonly IContainerExtension _containerExtension;
         #endregion
 
-        public SettingsMainWindow(IContainerExtension containerExtension, IRegionManager regionManager)
+        public SettingsMainWindow(IRegionManager regionManager)
         {
             InitializeComponent();
-            _containerExtension = containerExtension;
-            _regionManager = regionManager;
 
+            _regionManager = regionManager;
             RegionManager.SetRegionManager(this, _regionManager);
             _regionManager.RegisterViewWithRegion("SettingRegion", typeof(Setting));
         }
