@@ -2,6 +2,7 @@
 using DryIoc;
 using Prism.DryIoc;
 using Prism.Regions;
+using Prism.Ioc;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,15 +13,18 @@ namespace NavigationUsingRegionsDemo.Views.Settings
     /// </summary>
     public partial class SettingsMainWindow : UserControl
     {
+        #region Private fields
         private readonly IRegionManager _regionManager;
-        private readonly IContainer _container;
+        private readonly IContainerExtension _containerExtension;
+        #endregion
 
-        public SettingsMainWindow()
+        public SettingsMainWindow(IContainerExtension containerExtension, IRegionManager regionManager)
         {
             InitializeComponent();
-            _container = ((App)Application.Current).Container.GetContainer();
-            _regionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
+            _containerExtension = containerExtension;
+            _regionManager = regionManager;
 
+            RegionManager.SetRegionManager(this, _regionManager);
             _regionManager.RegisterViewWithRegion("SettingRegion", typeof(Setting));
         }
     }
