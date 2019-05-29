@@ -15,6 +15,11 @@ namespace NavigationUsingRegionsDemo.Views.Settings
     {
         #region Private fields
         private readonly IRegionManager _regionManager;
+        private readonly IRegionManager _scopedSettingsMatinWindowRegionManager;
+        #endregion
+
+        #region Public properties
+
         #endregion
 
         public SettingsMainWindow(IRegionManager regionManager)
@@ -22,8 +27,10 @@ namespace NavigationUsingRegionsDemo.Views.Settings
             InitializeComponent();
 
             _regionManager = regionManager;
-            RegionManager.SetRegionManager(this, _regionManager);
-            _regionManager.RegisterViewWithRegion("SettingRegion", typeof(Setting));
+
+            _scopedSettingsMatinWindowRegionManager = _regionManager.CreateRegionManager();
+            RegionManager.SetRegionManager(this, _scopedSettingsMatinWindowRegionManager);
+            _scopedSettingsMatinWindowRegionManager.RegisterViewWithRegion("SettingsMainWindowRegion", typeof(SettingsMainWindow));
         }
     }
 }
